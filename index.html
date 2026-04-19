@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алтын Кадр | Фото-экскурсия в Казани</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            900: '#064E3B', // Основной акцент
+                            800: '#065F46',
+                        },
+                        gold: {
+                            500: '#D4AF37', // Золотой акцент
+                            600: '#B5952F',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #064E3B;
+            border-radius: 4px;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Navigation (Mobile & Desktop) -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-2xl font-bold text-emerald-900 tracking-wide">ALTYN KADR</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-600 hover:text-emerald-900 transition font-medium">О нас</a>
+                    <a href="#gallery" class="text-gray-600 hover:text-emerald-900 transition font-medium">Галерея</a>
+                    <a href="#reviews" class="text-gray-600 hover:text-emerald-900 transition font-medium">Отзывы</a>
+                    <a href="#contact" class="px-6 py-2 bg-emerald-900 text-gold-500 rounded-full font-medium hover:bg-emerald-800 transition shadow-lg transform hover:-translate-y-0.5">Забронировать</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-emerald-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#about" class="block py-3 px-4 text-gray-600 hover:bg-gray-50">О нас</a>
+            <a href="#gallery" class="block py-3 px-4 text-gray-600 hover:bg-gray-50">Галерея</a>
+            <a href="#reviews" class="block py-3 px-4 text-gray-600 hover:bg-gray-50">Отзывы</a>
+            <a href="#contact" class="block py-3 px-4 text-emerald-900 font-bold hover:bg-gray-50">Забронировать</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1596423736775-b2dbd3b756cc?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Kazan Kremlin" 
+                 class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
+            <p class="text-gold-500 font-medium tracking-[0.2em] mb-4 uppercase text-sm md:text-base">Tatar Modern Experience</p>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-bold leading-tight mb-6 drop-shadow-lg">
+                Казань в объективе:<br>
+                <span class="italic font-light">Экскурсия + Фотосессия</span>
+            </h1>
+            <p class="text-gray-200 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
+                Прогулка по улице Баумана и Кремлю в атмосферных национальных костюмах. Сохраните моменты вечности.
+            </p>
+            <a href="#tariffs" class="inline-block px-8 py-4 bg-gold-500 text-white font-medium rounded-sm hover:bg-gold-600 transition duration-300 shadow-xl tracking-wide transform hover:scale-105">
+                Забронировать место
+            </a>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                
+                <!-- Feature 1 -->
+                <div class="group p-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-full flex items-center justify-center group-hover:bg-emerald-900 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-emerald-900 group-hover:text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-emerald-900 mb-3">Профессиональный фотограф</h3>
+                    <p class="text-gray-600 font-light leading-relaxed">Поможем с позированием и найдем лучшие ракурсы на фоне исторических зданий.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="group p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-full flex items-center justify-center group-hover:bg-emerald-900 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-emerald-900 group-hover:text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-emerald-900 mb-3">120 фото в подарок</h3>
+                    <p class="text-gray-600 font-light leading-relaxed">Вы получите все исходники в цветокоррекции и 15 фото в детальной ретуши.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="group p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-full flex items-center justify-center group-hover:bg-emerald-900 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-emerald-900 group-hover:text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-emerald-900 mb-3">Татарские костюмы</h3>
+                    <p class="text-gray-600 font-light leading-relaxed">Доступ к коллекции аутентичных костюмов в Музее национальной культуры.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Tariffs Section -->
+    <section id="tariffs" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-emerald-900 mb-4">Выберите свой формат</h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Classic Plan -->
+                <div class="bg-white p-8 md:p-10 rounded-sm shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 relative overflow-hidden" data-aos="fade-right">
+                    <h3 class="font-serif text-2xl font-bold text-gray-800 mb-2">Классика</h3>
+                    <p class="text-gray-500 text-sm mb-6">Прогулка + Фотосессия</p>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-emerald-900">5 500 ₽</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-gray-600">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> 1 час съемки</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Улица Баумана и окрестности</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Помощь в позировании</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Готовность фото: 3 дня</li>
+                    </ul>
+                    <a href="#contact" onclick="selectTariff('classic')" class="block w-full py-3 border border-emerald-900 text-emerald-900 text-center font-medium hover:bg-emerald-900 hover:text-white transition duration-300">Выбрать</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-emerald-900 p-8 md:p-10 rounded-sm shadow-xl border border-emerald-800 hover:shadow-2xl transition duration-300 relative overflow-hidden transform md:-translate-y-4" data-aos="fade-left">
+                    <!-- Badge -->
+                    <div class="absolute top-0 right-0 bg-gold-500 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">Хит сезона!</div>
+                    
+                    <h3 class="font-serif text-2xl font-bold text-white mb-2">В образах</h3>
+                    <p class="text-emerald-200 text-sm mb-6">С переодеванием в Музее</p>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-gold-500">7 500 ₽</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-emerald-100">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> 1.5 часа съемки</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Аренда национальных костюмов</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Территория Кремля + Баумана</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-gold-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Приоритетная обработка</li>
+                    </ul>
+                    <a href="#contact" onclick="selectTariff('premium')" class="block w-full py-3 bg-gold-500 text-white text-center font-medium hover:bg-gold-600 transition duration-300 shadow-lg">Выбрать</a>
+                </div>
+
+            </div>
+            
+            <p class="text-center text-gray-500 text-sm mt-8 italic">
+                * В июле-августе действует сезонная наценка +15%
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-emerald-900 mb-4">Наши работы</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Живые эмоции и эстетика татарского модерна в каждом кадре.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- Photo 1 -->
+                <div class="aspect-[3/4] overflow-hidden rounded-sm group" data-aos="zoom-in" data-aos-delay="0">
+                    <img src="https://images.unsplash.com/photo-1542641798-2e959a56f26e?q=80&w=1000&auto=format&fit=crop" alt="Couple in costumes" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                </div>
+                <!-- Photo 2 -->
+                <div class="aspect-[3/4] overflow-hidden rounded-sm group md:col-span-2" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1565060169308-754109639238?q=80&w=1000&auto=format&fit=crop" alt="Kazan Architecture" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                </div>
+                <!-- Photo 3 -->
+                <div class="aspect-[3/4] overflow-hidden rounded-sm group" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" alt="Portrait" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                </div>
+                <!-- Photo 4 -->
+                <div class="aspect-[3/4] overflow-hidden rounded-sm group" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc330e7?q=80&w=1000&auto=format&fit=crop" alt="Street style" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                </div>
+                <!-- Photo 5 -->
+                <div class="aspect-[3/4] overflow-hidden rounded-sm group md:col-span-2" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?q=80&w=1000&auto=format&fit=crop" alt="Details" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-emerald-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-emerald-900">Отзывы гостей</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-sm shadow-md" data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex text-gold-500 mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Лучший подарок мужу на юбилей! Фотографии получились просто космические. Костюмы чистые, красивые, фотограф помогала с позами."</p>
+                    <div class="font-serif font-bold text-emerald-900">— Елена М.</div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-sm shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-gold-500 mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Фото огонь, гид супер! Узнали много интересного о Казани, пока гуляли по Баумана. Обязательно вернемся еще."</p>
+                    <div class="font-serif font-bold text-emerald-900">— Дмитрий и Ольга</div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-sm shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-gold-500 mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Очень атмосферно. Чувствуешь себя частью истории. Спасибо за терпение и профессионализм!"</p>
+                    <div class="font-serif font-bold text-emerald-900">— Айгуль Р.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Booking Section -->
+    <section id="contact" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Text Info -->
+                <div data-aos="fade-right">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-emerald-900 mb-6">Забронировать дату</h2>
+                    <p class="text-gray-600 mb-8 text-lg">Оставьте заявку, и мы свяжемся с вами в течение 15 минут для подтверждения времени и деталей встречи.</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center text-gray-700">
+                            <svg class="w-6 h-6 text-gold-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span>+7 (999) 000-00-00</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <svg class="w-6 h-6 text-gold-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>Казань, ул. Баумана, 1</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/79990000000" target="_blank" class="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition shadow-lg">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Написать в WhatsApp
+                    </a>
+                </div>
+
+                <!-- Form -->
+                <div class="bg-white p-8 md:p-10 rounded-sm shadow-2xl border border-gray-100" data-aos="fade-left">
+                    <!-- 
+                         IMPORTANT: Replace 'your-id' below with your actual Formspree ID.
+                         Go to https://formspree.io/ to create a form and get your unique endpoint.
+                    -->
+                    <form action="https://formspree.io/f/your-id" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Ваше имя</label>
+                            <input type="text" name="name" id="name" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:ring-2 focus:ring-emerald-900 focus:border-transparent outline-none transition" placeholder="Иван">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Телефон</label>
+                            <input type="tel" name="phone" id="phone" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:ring-2 focus:ring-emerald-900 focus:border-transparent outline-none transition" placeholder="+7 (___) ___-__-__">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Желаемая дата</label>
+                                <input type="date" name="date" id="date" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:ring-2 focus:ring-emerald-900 focus:border-transparent outline-none transition">
+                            </div>
+                            <div>
+                                <label for="tariff" class="block text-sm font-medium text-gray-700 mb-1">Тариф</label>
+                                <select name="tariff" id="tariff-select" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:ring-2 focus:ring-emerald-900 focus:border-transparent outline-none transition">
+                                    <option value="classic">Классика (5 500 ₽)</option>
+                                    <option value="premium">В образах (7 500 ₽)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-emerald-900 text-white font-medium rounded-sm hover:bg-emerald-800 transition duration-300 shadow-lg tracking-wide">
+                            Отправить заявку
+                        </button>
+                        <p class="text-xs text-gray-400 text-center mt-4">Нажимаем кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-900 text-white py-12 border-t border-emerald-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <span class="font-serif text-2xl font-bold tracking-wide block mb-2">ALTYN KADR</span>
+                    <p class="text-emerald-200 text-sm">ИП "Алтын Кадр"</p>
+                    <p class="text-emerald-200 text-sm">ИНН 123456789012</p>
+                </div>
+                <div class="flex space-x-6 text-sm text-emerald-200">
+                    <a href="#" class="hover:text-gold-500 transition">Политика конфиденциальности</a>
+                    <a href="#" class="hover:text-gold-500 transition">Договор оферты</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-emerald-800 text-center text-xs text-emerald-400">
+                &copy; 2023 Алтын Кадр. Все права защищены. Дизайн в стиле Tatar Modern.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS Animation
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Auto-select tariff in form based on button click
+        function selectTariff(tariff) {
+            const select = document.getElementById('tariff-select');
+            select.value = tariff;
+        }
+    </script>
+</body>
+</html>
